@@ -5,70 +5,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Soda Pop 🥤 | Saja Boys (K-Pop Demon Hunters)</title>
+    <title>Cubes & Cuboids | Geometry Presentation 🧊🌸</title>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Floating Soda Pop Bubbles Container -->
-    <div id="bubbles" class="bubbles-bg"></div>
+    <!-- Floating Pink Cubes Particle Background -->
+    <div id="particles" class="particles-bg"></div>
 
     <main class="container">
-        <div class="badge">🔥 SAJA BOYS • K-POP DEMON HUNTERS</div>
-        <h1>Soda Pop 🥤</h1>
-        <p class="lyric-lead">"You're all I can think of, every drop I drink up... You're my soda pop!"</p>
+        <!-- Header -->
+        <header class="hero">
+            <span class="badge">🌸 Math Presentation Project</span>
+            <h1>Cubes & Cuboids 🧊</h1>
+            <p class="subtitle">An Interactive Guide to 3D Geometry, Formulas, and Properties</p>
+        </header>
 
-        <div class="quote-card">
-            <p>Teacher Lewis smells like durian 🍈</p>
-            <p class="subquote">In my class, there is so much drama. Tomorrow in class I hope no one starts any fights because I have a cuboid and cube presentation that I need to ace!</p>
-        </div>
+        <!-- 3D Shape Preview & Interactive Calculator -->
+        <section class="card calculator-card">
+            <h2>✨ Interactive Shape Calculator & 3D Model</h2>
 
-        <button id="musicBtn" class="music-btn">
-            <span class="icon">🥤</span> Play Soda Pop (K-Pop Synth)
-        </button>
-
-        <div id="status" class="status-text">Playing Saja Boys - Soda Pop 🎵</div>
-
-        <!-- Tic-Tac-Toe Game Section -->
-        <section class="game-section">
-            <h2 class="game-title">⚡ Neon Tic-Tac-Toe ⚡</h2>
-            
-            <div class="mode-selector">
-                <button id="modePvp" class="mode-btn active">👥 2 Players</button>
-                <button id="modeAi" class="mode-btn">🤖 vs AI</button>
+            <!-- Shape Type Selector -->
+            <div class="shape-selector">
+                <button id="selectCube" class="shape-btn active">🧊 Cube</button>
+                <button id="selectCuboid" class="shape-btn">📦 Cuboid</button>
             </div>
 
-            <div id="gameStatus" class="game-status-box">Player <span class="player-mark x-mark">X</span>'s Turn</div>
-
-            <div class="board" id="board">
-                <button class="cell" data-index="0"></button>
-                <button class="cell" data-index="1"></button>
-                <button class="cell" data-index="2"></button>
-                <button class="cell" data-index="3"></button>
-                <button class="cell" data-index="4"></button>
-                <button class="cell" data-index="5"></button>
-                <button class="cell" data-index="6"></button>
-                <button class="cell" data-index="7"></button>
-                <button class="cell" data-index="8"></button>
-            </div>
-
-            <div class="scoreboard">
-                <div class="score-card">
-                    <span class="score-label">X Wins</span>
-                    <span id="scoreX" class="score-num x-num">0</span>
-                </div>
-                <div class="score-card">
-                    <span class="score-label">Ties</span>
-                    <span id="scoreTies" class="score-num">0</span>
-                </div>
-                <div class="score-card">
-                    <span class="score-label">O Wins</span>
-                    <span id="scoreO" class="score-num o-num">0</span>
+            <!-- 3D Cube Canvas / Viewport -->
+            <div class="viewport-3d">
+                <div id="cube3d" class="cube-3d">
+                    <div class="face front">Front</div>
+                    <div class="face back">Back</div>
+                    <div class="face right">Right</div>
+                    <div class="face left">Left</div>
+                    <div class="face top">Top</div>
+                    <div class="face bottom">Bottom</div>
                 </div>
             </div>
 
-            <button id="resetGameBtn" class="reset-btn">🔄 Restart Match</button>
+            <!-- Controls Form -->
+            <div class="controls-grid">
+                <div class="input-group" id="groupLength">
+                    <label for="inputLength">Side / Length ($l$): <span id="valLength">5</span> cm</label>
+                    <input type="range" id="inputLength" min="1" max="10" value="5" step="0.5">
+                </div>
+                <div class="input-group hidden-cuboid" id="groupWidth">
+                    <label for="inputWidth">Width ($w$): <span id="valWidth">4</span> cm</label>
+                    <input type="range" id="inputWidth" min="1" max="10" value="4" step="0.5">
+                </div>
+                <div class="input-group hidden-cuboid" id="groupHeight">
+                    <label for="inputHeight">Height ($h$): <span id="valHeight">3</span> cm</label>
+                    <input type="range" id="inputHeight" min="1" max="10" value="3" step="0.5">
+                </div>
+            </div>
+
+            <!-- Results Output -->
+            <div class="results-grid">
+                <div class="result-box">
+                    <span class="res-title">Volume ($V$)</span>
+                    <span id="resVolume" class="res-val">125 cm³</span>
+                    <small id="formulaVol">Formula: $V = s^3$</small>
+                </div>
+                <div class="result-box">
+                    <span class="res-title">Total Surface Area ($SA$)</span>
+                    <span id="resArea" class="res-val">150 cm²</span>
+                    <small id="formulaArea">Formula: $SA = 6s^2$</small>
+                </div>
+                <div class="result-box">
+                    <span class="res-title">Total Edge Length</span>
+                    <span id="resEdges" class="res-val">60 cm</span>
+                    <small id="formulaEdges">12 equal edges</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Knowledge Section -->
+        <section class="grid-2col">
+            <!-- Cube Card -->
+            <div class="card info-card">
+                <div class="card-icon">🧊</div>
+                <h3>What is a Cube?</h3>
+                <p>A <strong>cube</strong> is a three-dimensional solid object bounded by six square faces, with three faces meeting at each vertex.</p>
+                <ul class="props-list">
+                    <li>✨ <strong>6 Congruent Square Faces</strong></li>
+                    <li>✨ <strong>12 Edges</strong> (All equal in length)</li>
+                    <li>✨ <strong>8 Vertices</strong> (Corners)</li>
+                    <li>✨ <strong>All angles are 90°</strong></li>
+                </ul>
+                <div class="formula-chip">
+                    Volume = $s^3$ &nbsp;|&nbsp; Surface Area = $6s^2$
+                </div>
+            </div>
+
+            <!-- Cuboid Card -->
+            <div class="card info-card">
+                <div class="card-icon">📦</div>
+                <h3>What is a Cuboid?</h3>
+                <p>A <strong>cuboid</strong> (rectangular prism) is a 3D box shape bounded by six rectangular faces.</p>
+                <ul class="props-list">
+                    <li>✨ <strong>6 Rectangular Faces</strong></li>
+                    <li>✨ <strong>12 Edges</strong> (3 sets of 4 parallel edges: $l, w, h$)</li>
+                    <li>✨ <strong>8 Vertices</strong> (Corners)</li>
+                    <li>✨ <strong>Opposite faces are identical</strong></li>
+                </ul>
+                <div class="formula-chip">
+                    Volume = $l \cdot w \cdot h$ &nbsp;|&nbsp; $SA = 2(lw + lh + wh)$
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="card table-card">
+            <h2>📊 Cube vs. Cuboid Quick Comparison</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Cube 🧊</th>
+                            <th>Cuboid 📦</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Face Shape</strong></td>
+                            <td>All 6 faces are identical Squares</td>
+                            <td>6 Rectangles (Opposite pairs identical)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Edge Lengths</strong></td>
+                            <td>All 12 edges are EQUAL ($s$)</td>
+                            <td>Edges vary in Length ($l$), Width ($w$), Height ($h$)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Volume Formula</strong></td>
+                            <td>$V = s^3$</td>
+                            <td>$V = l \times w \times h$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Surface Area Formula</strong></td>
+                            <td>$SA = 6s^2$</td>
+                            <td>$SA = 2(lw + lh + wh)$</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Presentation Quiz -->
+        <section class="card quiz-card">
+            <h2>🎯 Presentation Knowledge Quiz</h2>
+            <p>Test your understanding of cubes & cuboids for class!</p>
+
+            <div class="quiz-box" id="quizBox">
+                <p id="quizQuestion" class="quiz-q">Question 1: How many vertices (corners) does a cube have?</p>
+                <div class="quiz-options" id="quizOptions">
+                    <button class="quiz-btn" data-ans="6">6</button>
+                    <button class="quiz-btn" data-ans="8">8</button>
+                    <button class="quiz-btn" data-ans="12">12</button>
+                </div>
+                <div id="quizFeedback" class="quiz-feedback"></div>
+            </div>
         </section>
     </main>
 
