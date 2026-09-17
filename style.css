@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Cubes & Cuboids Presentation - Pink Geometry Theme
+   Cubes & Cuboids Presentation - Blue Geometry Theme
    ========================================================================== */
 
 *,
@@ -12,15 +12,15 @@
 
 :root {
     --font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --primary-pink: #ff2a7a;
-    --pink-hover: #e0005a;
-    --pink-light: #ff75a0;
-    --pink-soft: #fff0f5;
-    --pink-glow: rgba(255, 42, 122, 0.4);
-    --dark-bg: #1f0412;
-    --card-bg: rgba(255, 255, 255, 0.94);
-    --text-dark: #2b0017;
-    --text-muted: #6b3550;
+    --primary-blue: #2563eb;
+    --blue-hover: #1d4ed8;
+    --blue-light: #60a5fa;
+    --blue-soft: #eff6ff;
+    --blue-glow: rgba(37, 99, 235, 0.4);
+    --dark-bg: #091e42;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-dark: #0f172a;
+    --text-muted: #475569;
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 10px;
@@ -28,7 +28,7 @@
 
 body {
     font-family: var(--font-family);
-    background: radial-gradient(circle at 10% 20%, #ff85b3 0%, #ff2a7a 35%, #590029 80%, #1f0412 100%);
+    background: radial-gradient(circle at 10% 20%, #3b82f6 0%, #1d4ed8 35%, #1e1b4b 80%, #0f172a 100%);
     background-attachment: fixed;
     color: var(--text-dark);
     line-height: 1.6;
@@ -38,7 +38,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Floating Pink Particles */
+/* Floating Blue Particles */
 .particles-bg {
     position: fixed;
     top: 0;
@@ -53,7 +53,7 @@ body {
     position: absolute;
     bottom: -60px;
     border: 2px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 117, 160, 0.25);
+    background: rgba(96, 165, 250, 0.3);
     backdrop-filter: blur(4px);
     border-radius: 8px;
     animation: spinFloat 10s infinite linear;
@@ -84,8 +84,8 @@ body {
     border-radius: var(--radius-lg);
     padding: 1.75rem 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 25px rgba(255, 42, 122, 0.3);
-    border: 2px solid #ffccd5;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 25px rgba(37, 99, 235, 0.3);
+    border: 2px solid #bfdbfe;
     text-align: center;
     animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -108,11 +108,11 @@ body {
     font-weight: 800;
     letter-spacing: 0.8px;
     color: #ffffff;
-    background: linear-gradient(135deg, var(--primary-pink), #ff5493);
+    background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
     border-radius: 9999px;
     margin-bottom: 0.6rem;
     text-transform: uppercase;
-    box-shadow: 0 4px 12px rgba(255, 42, 122, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .teacher-welcome-card h2 {
@@ -174,14 +174,14 @@ body {
     border-radius: var(--radius-lg);
     padding: 2.25rem 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 15px 35px rgba(43, 0, 23, 0.25), 0 0 20px rgba(255, 42, 122, 0.15);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25), 0 0 20px rgba(37, 99, 235, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .card h2 {
     font-size: 1.75rem;
     font-weight: 800;
-    color: var(--primary-pink);
+    color: var(--primary-blue);
     margin-bottom: 1.25rem;
     text-align: center;
 }
@@ -198,24 +198,24 @@ body {
     padding: 0.75rem 2rem;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--primary-pink);
+    color: var(--primary-blue);
     background: #ffffff;
-    border: 2px solid var(--primary-pink);
+    border: 2px solid var(--primary-blue);
     border-radius: 9999px;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 12px rgba(255, 42, 122, 0.15);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
 }
 
 .shape-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(255, 42, 122, 0.3);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
 }
 
 .shape-btn.active {
     color: #ffffff;
-    background: linear-gradient(135deg, var(--primary-pink), #ff5493);
-    box-shadow: 0 6px 20px var(--pink-glow);
+    background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+    box-shadow: 0 6px 20px var(--blue-glow);
 }
 
 /* 3D Viewport & CSS Cube */
@@ -247,7 +247,7 @@ body {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: rgba(255, 42, 122, 0.75);
+    background: rgba(37, 99, 235, 0.75);
     border: 2px solid #ffffff;
     box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.6);
     display: flex;
@@ -263,10 +263,10 @@ body {
 
 .front  { transform: translateZ(50px); }
 .back   { transform: rotateY(180deg) translateZ(50px); }
-.right  { transform: rotateY(90deg) translateZ(50px); background: rgba(255, 117, 160, 0.85); }
-.left   { transform: rotateY(-90deg) translateZ(50px); background: rgba(255, 117, 160, 0.85); }
-.top    { transform: rotateX(90deg) translateZ(50px); background: rgba(255, 168, 196, 0.9); }
-.bottom { transform: rotateX(-90deg) translateZ(50px); background: rgba(224, 0, 90, 0.9); }
+.right  { transform: rotateY(90deg) translateZ(50px); background: rgba(96, 165, 250, 0.85); }
+.left   { transform: rotateY(-90deg) translateZ(50px); background: rgba(96, 165, 250, 0.85); }
+.top    { transform: rotateX(90deg) translateZ(50px); background: rgba(147, 197, 253, 0.9); }
+.bottom { transform: rotateX(-90deg) translateZ(50px); background: rgba(29, 78, 216, 0.9); }
 
 /* Controls Form */
 .controls-grid {
@@ -274,7 +274,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.25rem;
     margin-bottom: 2rem;
-    background: rgba(255, 240, 245, 0.8);
+    background: rgba(239, 246, 255, 0.8);
     padding: 1.5rem;
     border-radius: var(--radius-md);
 }
@@ -292,7 +292,7 @@ body {
 }
 
 .input-group input[type="range"] {
-    accent-color: var(--primary-pink);
+    accent-color: var(--primary-blue);
     cursor: pointer;
 }
 
@@ -305,11 +305,11 @@ body {
 
 .result-box {
     background: #ffffff;
-    border: 2px solid #ffccd5;
+    border: 2px solid #bfdbfe;
     border-radius: var(--radius-md);
     padding: 1.25rem;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(255, 42, 122, 0.08);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.08);
 }
 
 .res-title {
@@ -325,7 +325,7 @@ body {
     display: block;
     font-size: 1.8rem;
     font-weight: 900;
-    color: var(--primary-pink);
+    color: var(--primary-blue);
     margin-bottom: 0.25rem;
 }
 
@@ -354,7 +354,7 @@ body {
 .info-card h3 {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--primary-pink);
+    color: var(--primary-blue);
     margin-bottom: 0.75rem;
 }
 
@@ -373,9 +373,9 @@ body {
 
 .formula-chip {
     display: inline-block;
-    background: var(--pink-soft);
-    color: var(--primary-pink);
-    border: 1px solid #ffccd5;
+    background: var(--blue-soft);
+    color: var(--primary-blue);
+    border: 1px solid #bfdbfe;
     padding: 0.6rem 1rem;
     border-radius: var(--radius-sm);
     font-weight: 700;
@@ -402,18 +402,18 @@ table {
 th, td {
     padding: 1rem 1.25rem;
     text-align: left;
-    border-bottom: 1px solid #ffe6ed;
+    border-bottom: 1px solid #e0f2fe;
 }
 
 th {
-    background: linear-gradient(135deg, var(--primary-pink), #ff5493);
+    background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
     color: #ffffff;
     font-weight: 800;
     font-size: 1rem;
 }
 
 tr:nth-child(even) {
-    background: var(--pink-soft);
+    background: var(--blue-soft);
 }
 
 /* Quiz Section */
@@ -437,16 +437,16 @@ tr:nth-child(even) {
     padding: 0.75rem 1.75rem;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--primary-pink);
+    color: var(--primary-blue);
     background: #ffffff;
-    border: 2px solid var(--primary-pink);
+    border: 2px solid var(--primary-blue);
     border-radius: 9999px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .quiz-btn:hover {
-    background: var(--pink-soft);
+    background: var(--blue-soft);
     transform: scale(1.04);
 }
 
