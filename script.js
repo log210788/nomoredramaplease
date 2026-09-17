@@ -1,8 +1,19 @@
 // ==========================================================================
-// Synthesized "Happy Birthday" Audio Player (Web Audio API)
+// Soda Pop - Saja Boys (K-Pop Demon Hunters) Web Audio Synthesizer
 // ==========================================================================
 
 const noteFrequencies = {
+    'F2': 87.31,
+    'G2': 98.00,
+    'A2': 110.00,
+    'Bb2': 116.54,
+    'C3': 130.81,
+    'D3': 146.83,
+    'E3': 164.81,
+    'F3': 174.61,
+    'G3': 196.00,
+    'A3': 220.00,
+    'Bb3': 233.08,
     'C4': 261.63,
     'D4': 293.66,
     'E4': 329.63,
@@ -11,42 +22,66 @@ const noteFrequencies = {
     'A4': 440.00,
     'Bb4': 466.16,
     'C5': 523.25,
-    'D5': 587.33
+    'D5': 587.33,
+    'E5': 659.25,
+    'F5': 698.46
 };
 
-const happyBirthdayNotes = [
-    // Phrase 1: Happy Birthday to you
-    { note: 'C4', duration: 0.35 },
-    { note: 'C4', duration: 0.20 },
-    { note: 'D4', duration: 0.55 },
-    { note: 'C4', duration: 0.55 },
-    { note: 'F4', duration: 0.55 },
-    { note: 'E4', duration: 1.10 },
+// Saja Boys - "Soda Pop" Chorus Melody Sequence
+const sodaPopMelody = [
+    // "You're all I can think of"
+    { note: 'A4', duration: 0.22, bass: 'F2' },
+    { note: 'A4', duration: 0.22 },
+    { note: 'A4', duration: 0.22, bass: 'F2' },
+    { note: 'C5', duration: 0.35 },
+    { note: 'A4', duration: 0.35, bass: 'C3' },
 
-    // Phrase 2: Happy Birthday to you
-    { note: 'C4', duration: 0.35 },
-    { note: 'C4', duration: 0.20 },
-    { note: 'D4', duration: 0.55 },
-    { note: 'C4', duration: 0.55 },
-    { note: 'G4', duration: 0.55 },
-    { note: 'F4', duration: 1.10 },
+    // "Every drop I drink up"
+    { note: 'G4', duration: 0.22, bass: 'C3' },
+    { note: 'G4', duration: 0.22 },
+    { note: 'G4', duration: 0.22, bass: 'D3' },
+    { note: 'A4', duration: 0.35 },
+    { note: 'F4', duration: 0.35, bass: 'Bb2' },
 
-    // Phrase 3: Happy Birthday dear Teacher Lewis
-    { note: 'C4', duration: 0.35 },
-    { note: 'C4', duration: 0.20 },
-    { note: 'C5', duration: 0.55 },
-    { note: 'A4', duration: 0.55 },
-    { note: 'F4', duration: 0.55 },
-    { note: 'E4', duration: 0.55 },
-    { note: 'D4', duration: 1.10 },
+    // "You're my soda pop"
+    { note: 'F4', duration: 0.22, bass: 'Bb2' },
+    { note: 'G4', duration: 0.22 },
+    { note: 'A4', duration: 0.45, bass: 'C3' },
+    { note: 'C5', duration: 0.45 },
 
-    // Phrase 4: Happy Birthday to you
-    { note: 'Bb4', duration: 0.35 },
-    { note: 'Bb4', duration: 0.20 },
-    { note: 'A4', duration: 0.55 },
-    { note: 'F4', duration: 0.55 },
-    { note: 'G4', duration: 0.55 },
-    { note: 'F4', duration: 1.40 }
+    // "My little soda pop"
+    { note: 'D5', duration: 0.35, bass: 'F2' },
+    { note: 'C5', duration: 0.22 },
+    { note: 'A4', duration: 0.22, bass: 'C3' },
+    { note: 'G4', duration: 0.22 },
+    { note: 'F4', duration: 0.65, bass: 'F2' },
+
+    // "Cool me down, you're so hot"
+    { note: 'A4', duration: 0.22, bass: 'F2' },
+    { note: 'A4', duration: 0.22 },
+    { note: 'A4', duration: 0.22, bass: 'F2' },
+    { note: 'C5', duration: 0.35 },
+    { note: 'A4', duration: 0.35, bass: 'C3' },
+
+    // "Pour me up, I won't stop"
+    { note: 'G4', duration: 0.22, bass: 'C3' },
+    { note: 'G4', duration: 0.22 },
+    { note: 'G4', duration: 0.22, bass: 'D3' },
+    { note: 'A4', duration: 0.35 },
+    { note: 'F4', duration: 0.35, bass: 'Bb2' },
+
+    // "You're my soda pop"
+    { note: 'F4', duration: 0.22, bass: 'Bb2' },
+    { note: 'G4', duration: 0.22 },
+    { note: 'A4', duration: 0.45, bass: 'C3' },
+    { note: 'C5', duration: 0.45 },
+
+    // "My little soda pop!"
+    { note: 'D5', duration: 0.35, bass: 'F2' },
+    { note: 'C5', duration: 0.22 },
+    { note: 'A4', duration: 0.22, bass: 'C3' },
+    { note: 'G4', duration: 0.35 },
+    { note: 'F4', duration: 0.85, bass: 'F2' }
 ];
 
 let audioCtx = null;
@@ -59,38 +94,62 @@ function initAudioContext() {
     }
 }
 
-function playSynthesizedNote(freq, startTime, duration) {
+// Synthesize energetic K-Pop synth lead & sub-bass
+function playKPopSynthNote(freq, bassFreq, startTime, duration) {
     if (!freq) return;
 
-    const osc1 = audioCtx.createOscillator();
-    const osc2 = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    // Lead Oscillator 1: Sawtooth (Bright K-Pop Lead)
+    const leadOsc = audioCtx.createOscillator();
+    leadOsc.type = 'sawtooth';
+    leadOsc.frequency.value = freq;
 
-    // Soft warm synth voice (Triangle + Sine octave blend)
-    osc1.type = 'triangle';
-    osc1.frequency.value = freq;
+    // Lead Oscillator 2: Square wave (Punchy layered synth)
+    const synthOsc = audioCtx.createOscillator();
+    synthOsc.type = 'square';
+    synthOsc.frequency.value = freq;
 
-    osc2.type = 'sine';
-    osc2.frequency.value = freq * 0.5; // Sub-octave warmth
+    // Lowpass filter envelope for snappy synth sound
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1200, startTime);
+    filter.frequency.exponentialRampToValueAtTime(400, startTime + duration);
 
-    const attack = 0.04;
-    const release = 0.12;
+    const leadGain = audioCtx.createGain();
+    leadGain.gain.setValueAtTime(0, startTime);
+    leadGain.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
+    leadGain.gain.exponentialRampToValueAtTime(0.001, startTime + duration + 0.05);
 
-    gainNode.gain.setValueAtTime(0, startTime);
-    gainNode.gain.linearRampToValueAtTime(0.3, startTime + attack);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration + release);
+    leadOsc.connect(filter);
+    synthOsc.connect(filter);
+    filter.connect(leadGain);
+    leadGain.connect(audioCtx.destination);
 
-    osc1.connect(gainNode);
-    osc2.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+    leadOsc.start(startTime);
+    synthOsc.start(startTime);
+    leadOsc.stop(startTime + duration + 0.05);
+    synthOsc.stop(startTime + duration + 0.05);
 
-    osc1.start(startTime);
-    osc2.start(startTime);
-    osc1.stop(startTime + duration + release);
-    osc2.stop(startTime + duration + release);
+    // Sub-bass line
+    if (bassFreq) {
+        const bassOsc = audioCtx.createOscillator();
+        const bassGain = audioCtx.createGain();
+
+        bassOsc.type = 'triangle';
+        bassOsc.frequency.value = bassFreq;
+
+        bassGain.gain.setValueAtTime(0, startTime);
+        bassGain.gain.linearRampToValueAtTime(0.35, startTime + 0.02);
+        bassGain.gain.exponentialRampToValueAtTime(0.001, startTime + duration + 0.1);
+
+        bassOsc.connect(bassGain);
+        bassGain.connect(audioCtx.destination);
+
+        bassOsc.start(startTime);
+        bassOsc.stop(startTime + duration + 0.1);
+    }
 }
 
-function playHappyBirthday() {
+function playSodaPop() {
     initAudioContext();
 
     if (audioCtx.state === 'suspended') {
@@ -100,42 +159,62 @@ function playHappyBirthday() {
     if (isPlaying) return;
     isPlaying = true;
 
+    const statusText = document.getElementById('status');
+    if (statusText) statusText.classList.add('visible');
+
     let currentTime = audioCtx.currentTime + 0.1;
 
-    happyBirthdayNotes.forEach((item) => {
+    sodaPopMelody.forEach((item) => {
         const freq = noteFrequencies[item.note];
-        playSynthesizedNote(freq, currentTime, item.duration);
-        currentTime += item.duration + 0.05; // slight pause between notes
+        const bassFreq = item.bass ? noteFrequencies[item.bass] : null;
+        playKPopSynthNote(freq, bassFreq, currentTime, item.duration);
+        currentTime += item.duration + 0.04;
     });
 
     const totalDuration = (currentTime - audioCtx.currentTime) * 1000;
     setTimeout(() => {
         isPlaying = false;
+        if (statusText) statusText.classList.remove('visible');
     }, totalDuration);
 }
 
-// Attempt immediate playback on load & handle browser autoplay policies
-document.addEventListener('DOMContentLoaded', () => {
-    const musicBtn = document.getElementById('musicBtn');
+// Generate animated floating soda bubbles
+function createBubbles() {
+    const container = document.getElementById('bubbles');
+    if (!container) return;
 
+    for (let i = 0; i < 20; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 25 + 10;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${Math.random() * 5 + 4}s`;
+        bubble.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(bubble);
+    }
+}
+
+// Autoplay and click handler
+document.addEventListener('DOMContentLoaded', () => {
+    createBubbles();
+
+    const musicBtn = document.getElementById('musicBtn');
     if (musicBtn) {
         musicBtn.addEventListener('click', () => {
-            playHappyBirthday();
+            playSodaPop();
         });
     }
 
-    // Try autoplay on page open
     const startAutoplay = () => {
-        playHappyBirthday();
-        // Remove interaction listeners once audio starts
+        playSodaPop();
         document.removeEventListener('click', startAutoplay);
         document.removeEventListener('keydown', startAutoplay);
     };
 
-    // Attempt direct play
-    playHappyBirthday();
+    playSodaPop();
 
-    // Fallback: If browser blocks un-muted autoplay, trigger on first user click or touch anywhere on the page
     document.addEventListener('click', startAutoplay, { once: true });
     document.addEventListener('keydown', startAutoplay, { once: true });
 });
