@@ -70,6 +70,44 @@ body {
     }
 }
 
+/* Full Screen Heart Overlay & Animation */
+.heart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.burst-heart {
+    position: absolute;
+    animation: burstFloat 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+    user-select: none;
+}
+
+@keyframes burstFloat {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.3) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(-20vh) translateX(calc(var(--drift) * 0.3)) scale(1.35) rotate(15deg);
+    }
+    80% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-120vh) translateX(var(--drift)) scale(1) rotate(45deg);
+        opacity: 0;
+    }
+}
+
 .container {
     max-width: 960px;
     margin: 0 auto;

@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCalculator();
 
     // ==========================================================================
-    // Interactive Quiz Engine
+    // Interactive Quiz Engine with Heart Burst Animation
     // ==========================================================================
 
     const quizQuestions = [
@@ -198,6 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
             qText.textContent = "🎉 Quiz Complete! You are ready for your Cube Presentation! 🌟";
             qOptions.innerHTML = `<button id="retryQuiz" class="quiz-btn">🔄 Retry Quiz</button>`;
             qFeedback.textContent = "";
+
+            // Celebrate quiz completion with double heart burst!
+            spawnHeartExplosion();
+            setTimeout(spawnHeartExplosion, 500);
+
             document.getElementById('retryQuiz').addEventListener('click', () => {
                 currentQ = 0;
                 renderQuiz();
@@ -217,12 +222,16 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 if (opt === q.answer) {
                     btn.classList.add('correct');
-                    qFeedback.textContent = "✅ Correct! Great job!";
+                    qFeedback.textContent = "💖 Correct! Amazing job! 💖";
                     qFeedback.style.color = "#10b981";
+
+                    // Spawn Full Screen Heart Burst!
+                    spawnHeartExplosion();
+
                     setTimeout(() => {
                         currentQ++;
                         renderQuiz();
-                    }, 1200);
+                    }, 1800);
                 } else {
                     btn.classList.add('wrong');
                     qFeedback.textContent = "❌ Not quite! Try again.";
@@ -235,6 +244,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderQuiz();
 });
+
+// Full Screen Heart Emoji Explosion Function
+function spawnHeartExplosion() {
+    const heartOverlay = document.createElement('div');
+    heartOverlay.className = 'heart-overlay';
+    document.body.appendChild(heartOverlay);
+
+    const heartEmojis = ['💖', '❤️', '💗', '💓', '💕', '💙', '💘', '✨', '🌸', '💖', '❤️'];
+    const heartCount = 75;
+
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'burst-heart';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+        const startX = Math.random() * 100; // 0vw to 100vw
+        const startY = Math.random() * 40 + 60; // 60vh to 100vh
+        const size = Math.random() * 32 + 24; // 24px to 56px
+        const duration = Math.random() * 1.5 + 1.2; // 1.2s to 2.7s
+        const delay = Math.random() * 0.4;
+        const drift = (Math.random() - 0.5) * 260; // horizontal sway px
+
+        heart.style.left = `${startX}vw`;
+        heart.style.top = `${startY}vh`;
+        heart.style.fontSize = `${size}px`;
+        heart.style.animationDuration = `${duration}s`;
+        heart.style.animationDelay = `${delay}s`;
+        heart.style.setProperty('--drift', `${drift}px`);
+
+        heartOverlay.appendChild(heart);
+    }
+
+    setTimeout(() => {
+        heartOverlay.remove();
+    }, 3200);
+}
 
 // Floating Particle Generator
 function createParticles() {
