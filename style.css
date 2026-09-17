@@ -37,8 +37,8 @@ body {
     text-align: center;
     background: #ffffff;
     padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
@@ -50,5 +50,37 @@ h1 {
 p {
     color: #475569;
     font-size: 1.125rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Music Button */
+.music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.music-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, #1d4ed8, #4338ca);
+}
+
+.music-btn:active {
+    transform: translateY(0);
+}
+
+.music-btn .icon {
+    font-size: 1.2rem;
 }
