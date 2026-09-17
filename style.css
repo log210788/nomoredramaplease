@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Soda Pop - K-Pop Demon Hunters (Saja Boys) Styles
+   Soda Pop - K-Pop Demon Hunters & Tic-Tac-Toe Styles
    ========================================================================== */
 
 /* Modern CSS Reset */
@@ -176,6 +176,7 @@ h1 {
 
 .status-text {
     margin-top: 1rem;
+    margin-bottom: 1.5rem;
     font-size: 0.9rem;
     color: var(--secondary-neon);
     opacity: 0;
@@ -184,4 +185,191 @@ h1 {
 
 .status-text.visible {
     opacity: 1;
+}
+
+/* ==========================================================================
+   Tic-Tac-Toe Game Styling
+   ========================================================================== */
+
+.game-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--secondary-neon);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* Mode Selector */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.mode-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.mode-btn.active {
+    color: #ffffff;
+    background: rgba(255, 42, 133, 0.25);
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 12px rgba(255, 42, 133, 0.4);
+}
+
+.game-status-box {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    min-height: 1.8rem;
+}
+
+.player-mark {
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.player-mark.x-mark {
+    color: var(--secondary-neon);
+    text-shadow: 0 0 10px var(--secondary-neon);
+}
+
+.player-mark.o-mark {
+    color: var(--primary-neon);
+    text-shadow: 0 0 10px var(--primary-neon);
+}
+
+/* 3x3 Grid Board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 320px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.cell {
+    aspect-ratio: 1 / 1;
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.cell:hover:not([disabled]) {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: var(--secondary-neon);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    transform: scale(1.03);
+}
+
+.cell.x {
+    color: var(--secondary-neon);
+    text-shadow: 0 0 15px var(--secondary-neon);
+    border-color: rgba(0, 240, 255, 0.5);
+}
+
+.cell.o {
+    color: var(--primary-neon);
+    text-shadow: 0 0 15px var(--primary-neon);
+    border-color: rgba(255, 42, 133, 0.5);
+}
+
+.cell.winning {
+    background: rgba(255, 183, 3, 0.25) !important;
+    border-color: var(--accent-yellow) !important;
+    box-shadow: 0 0 25px var(--accent-yellow) !important;
+    animation: pulseWin 0.8s infinite alternate;
+}
+
+@keyframes pulseWin {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto 1.25rem auto;
+}
+
+.score-card {
+    flex: 1;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 0.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.score-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.score-num.x-num {
+    color: var(--secondary-neon);
+}
+
+.score-num.o-num {
+    color: var(--primary-neon);
+}
+
+/* Reset Button */
+.reset-btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
 }

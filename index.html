@@ -29,6 +29,47 @@
         </button>
 
         <div id="status" class="status-text">Playing Saja Boys - Soda Pop 🎵</div>
+
+        <!-- Tic-Tac-Toe Game Section -->
+        <section class="game-section">
+            <h2 class="game-title">⚡ Neon Tic-Tac-Toe ⚡</h2>
+            
+            <div class="mode-selector">
+                <button id="modePvp" class="mode-btn active">👥 2 Players</button>
+                <button id="modeAi" class="mode-btn">🤖 vs AI</button>
+            </div>
+
+            <div id="gameStatus" class="game-status-box">Player <span class="player-mark x-mark">X</span>'s Turn</div>
+
+            <div class="board" id="board">
+                <button class="cell" data-index="0"></button>
+                <button class="cell" data-index="1"></button>
+                <button class="cell" data-index="2"></button>
+                <button class="cell" data-index="3"></button>
+                <button class="cell" data-index="4"></button>
+                <button class="cell" data-index="5"></button>
+                <button class="cell" data-index="6"></button>
+                <button class="cell" data-index="7"></button>
+                <button class="cell" data-index="8"></button>
+            </div>
+
+            <div class="scoreboard">
+                <div class="score-card">
+                    <span class="score-label">X Wins</span>
+                    <span id="scoreX" class="score-num x-num">0</span>
+                </div>
+                <div class="score-card">
+                    <span class="score-label">Ties</span>
+                    <span id="scoreTies" class="score-num">0</span>
+                </div>
+                <div class="score-card">
+                    <span class="score-label">O Wins</span>
+                    <span id="scoreO" class="score-num o-num">0</span>
+                </div>
+            </div>
+
+            <button id="resetGameBtn" class="reset-btn">🔄 Restart Match</button>
+        </section>
     </main>
 
     <!-- JavaScript -->
